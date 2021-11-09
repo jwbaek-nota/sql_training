@@ -1,6 +1,7 @@
 # SQL training - day 1 
 ```
 서비스 운영 간에 필요한 간단한 DB 조회, 수정 업무에 대비해서 기초적 SQL 사용법에 대해 강의한다.
+SQL 을 다뤄본 적이 없거나 간단한 SELECT * FROM TABLE 정도만 해본 사람들을 위한 초급 강의이다.
 ```
 ## DB 기본 프로그램 설치
 ***
@@ -11,7 +12,7 @@
     https://offbyone.tistory.com/199
 
     maria db 는 mysql db 와 거의 호환된다. (같은 사람이 만들었음)
-    둘다 자주 삐꾸가 된다. 무거운 쿼리를 날리지 않는 것이 좋음.
+    둘다 자주 뻗는다. 무거운 쿼리를 날리지 않는 것이 좋음.
 
 ### DB Client 설치
 
@@ -35,7 +36,7 @@
 * 인사서류철 : TABLE   
 * 서류 한 장 : ROW   
 * 서류에 적혀있는 항목들 (이름, 나이, 전화번호 등등) : COLUMN   
-* 조건에 맞는 사람의 서류를 서류철에서 빼내는 행위 : SELECT   
+* 조건에 맞는 사람의 서류를 서류철에서 선택하는 행위 : SELECT   
 * 신규 입사자가 와서 새로운 서류를 서류철에 추가 : INSERT   
 * 인사 정보를 바꿔야하는 경우 (예 : 미혼 -> 기혼) : UPDATE   
 * 퇴사자가 발생하여 서류철에서 서류를 빼내는 행위 : DELETE   
@@ -44,11 +45,12 @@
 * 서류철을 파기해버림 : DROP   
 * 서류의 항목들을 변경 : ALTER
 
-대체로 실제 사람의 행위 자체를 묘사하는 단어를 사용함
+대체로 실제 사람의 행위 자체를 묘사하는 단어를 사용하는 것 같다.
 
 ***
 ## SELECT 문
 서류철의 서류들 중에 조건에 맞는 서류들을 `선택`한다   
+
 * DBeaver SQL 생성 -> SELECT
 ```
 SELECT 
@@ -76,9 +78,19 @@ SELECT
     task_id
 FROM nptk.task_detail
 ```
+* 쿼리의 결과는 다시 하나의 테이블 처럼 사용될 수 있다.
+```
+SELECT 
+    *
+FROM (
+    SELECT
+        *
+    FROM nptk.task_detail 
+) as nptk_task_detail
+```
 
 
-* `WHERE` 사용
+## `WHERE` 사용
 ```
 SELECT 
     id, 
@@ -94,6 +106,18 @@ FROM nptk.task_detail
 WHERE 1=1
 and id < 500;
 ```
+
+## LIMIT
+조회 결과의 상위 n 개 만 보여준다.   
+(속도에 영향을 미치므로 대량의 데이터를 조회할 때는 반드시 이 조건을 걸어주는 것이 좋다. - 보통은 DB client 프로그램에서 자동으로 걸어줌)
+
+```
+SELECT
+    *
+FROM nptk.task_detail 
+LIMIT 10
+```
+<br>
 
 ## 예제
 * nptk.task_master 테이블에서 model_type 이 'keras_savedmodel' 인 데이터를 조회하시오.
