@@ -78,7 +78,7 @@ SELECT
     task_id
 FROM nptk.task_detail
 ```
-* 쿼리의 결과는 다시 하나의 테이블 처럼 사용될 수 있다.
+* 서브쿼리 : 쿼리의 결과는 다시 하나의 테이블 처럼 사용될 수 있다.
 ```
 SELECT 
     *
@@ -89,7 +89,7 @@ FROM (
 ) as nptk_task_detail
 ```
 
-
+***
 ## `WHERE` 사용
 ```
 SELECT 
@@ -106,6 +106,20 @@ FROM nptk.task_detail
 WHERE 1=1
 and id < 500;
 ```
+***
+## WHERE 내부에서 IN 키워드 사용
+```
+SELECT
+    *
+FROM nptk.users
+WHERE
+email IN
+('bluesyblues@gmail.com', 'youngjun.jang@nota.ai')
+
+# IN 괄호 내에 서브쿼리가 들어갈 수도 있음 -> 자주 사용됨
+```
+
+***
 
 ## LIMIT
 조회 결과의 상위 n 개 만 보여준다.   
@@ -119,9 +133,12 @@ LIMIT 10
 ```
 <br>
 
+
+***
 ## 예제
 * nptk.task_master 테이블에서 model_type 이 'keras_savedmodel' 인 데이터를 조회하시오.
 * nptk.users 테이블에서 first_name, last_name, company 를 모두 입력한 데이터를 조회 하시오. (주의 : 현재 입력 받는 방식에 오류가 있어서 NULL 로 입력되어있는 row도 있고 스트링 'null' 로 입력되어 있는 row 도 있음.)
 * nptk.task_master 테이블에서 task_name 에 'resnet' 이라는 문자열을 포함한 데이터를 조회하시오. (LIKE 키워드 사용 https://www.w3schools.com/sql/sql_like.asp)
+* nptk.task_master 테이블에서 nptk.task_detail 에 존재하는 task_id 만 조회하시오.
   
 

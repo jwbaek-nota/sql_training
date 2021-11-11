@@ -3,6 +3,8 @@
 ## 복습
 1. 데이터의 조회 SELECT -> 서류철의 서류 중 조건에 맞는 것을 `선택` 한다.
 2. 데이터의 조건 WHERE
+
+***
    
 ## 자주 사용되는 함수들
 https://mariadb.com/kb/en/function-and-operator-reference/
@@ -61,7 +63,7 @@ ORDER BY created_time (DESC)
 * (DESC 는 역순)
 <br>
 <br>
-
+***
 ## DISTINCT
 중복 ROW 들을 제거한다.
 ```
@@ -75,7 +77,7 @@ SELECT
     COUNT(DISTINCT task_id) as cnt
 FROM nptk.task_detail
 ```
-
+***
 ## GROUP BY
 집계함수와 함께 사용하여 GROUP BY 에서 지정한 컬럼을 기준으로 집계함수를 적용한다.
 ```
@@ -84,7 +86,7 @@ SELECT
 FROM nptk.task_detail
 GROUP BY task_id
 ```
-
+***
 ## ROW_NUMBER OVER (PARTITION BY {COLUMN} ORDER BY COLUMN)
 ```
 SELECT
@@ -94,7 +96,7 @@ SELECT
 FROM nptk.task_master
 ```
 
-
+***
 ## 예제
 * 한 번 이상 task 를 생성시킨 user_id 의 수를 구하시오.
 * user_id 별로 task 를 몇 개 씩 생성시켰는지 조회하되, 가장 최근에 task 를 생성시킨 user_id 순으로 정렬하여 조회하시오.
