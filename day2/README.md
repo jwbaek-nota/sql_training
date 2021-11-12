@@ -63,7 +63,9 @@ ORDER BY created_time (DESC)
 * (DESC 는 역순)
 <br>
 <br>
+
 ***
+
 ## DISTINCT
 중복 ROW 들을 제거한다.
 ```
