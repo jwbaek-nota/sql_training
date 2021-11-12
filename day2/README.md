@@ -78,6 +78,7 @@ SELECT
 FROM nptk.task_detail
 ```
 ***
+
 ## GROUP BY
 집계함수와 함께 사용하여 GROUP BY 에서 지정한 컬럼을 기준으로 집계함수를 적용한다.
 ```
@@ -87,6 +88,7 @@ FROM nptk.task_detail
 GROUP BY task_id
 ```
 ***
+
 ## ROW_NUMBER OVER (PARTITION BY {COLUMN} ORDER BY COLUMN)
 ```
 SELECT
