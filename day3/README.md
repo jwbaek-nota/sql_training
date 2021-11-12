@@ -13,6 +13,9 @@
 
 예 : 인사기록철 과 건강검진기록철을 각 사람 별로 매칭을 시켜놓고 내용을 본다.   
 * 이름과 생년월일이 동일한지를 이용해서 매칭을 시킨다.
+```
+ON left_table.name = right_table.name and left_table.birthday = right_table.birthday
+```
 * 인사기록철에 있는 총 근무 시간과 건강검진기록철에 있는 건강 상태 사이의 상관 관계를 파악한다.
   
 ![join](hhRDO4d.png)
